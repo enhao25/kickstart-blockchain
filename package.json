@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "next dev"
   },
   "author": "",
   "license": "ISC",
@@ -12,7 +13,11 @@
     "fs-extra": "^9.0.1",
     "ganache-cli": "^6.9.1",
     "mocha": "^8.0.1",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "solc": "^0.4.17",
+    "truffle-hdwallet-provider": "^1.0.17",
     "web3": "^1.2.9"
   }
 }
