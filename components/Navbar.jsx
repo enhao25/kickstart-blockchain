@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
 
-const header = () => {
+const Navbar = () => {
     return (
         <Menu>
             <Menu.Item>
@@ -21,4 +21,4 @@ const header = () => {
     )
 }
 
-export default header;
+export default Navbar;
