@@ -1,5 +1,8 @@
 import React from 'react';
+import { Card, Button } from 'semantic-ui-react'
+
 import factory from "../ethereum/factory"
+import Layout from "../components/Layout"
 
 class CampaignIndex extends React.Component {
     // Need to be static so that next server can get this method without running the class / function
@@ -8,11 +11,29 @@ class CampaignIndex extends React.Component {
         return { campaigns }
     }
 
+    renderCampaigns() {
+        const items = this.props.campaigns.map(address => {
+            return {
+                header: address,
+                description: <a>View Campaign</a>,
+                fluid: true
+            }
+        })
+
+        return <Card.Group items={items} />
+    }
+
     render() {
         return (
-            <div>
-                {this.props.campaigns[0]}
-            </div>
+            <Layout>
+                <div>
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+                    <h3>Open Campaigns</h3>
+                    {/* Primary changes the button to blue */}
+                    <Button content='Create Campaign' floated="right" icon='add' primary />
+                    {this.renderCampaigns()}
+                </div>
+            </Layout>
         )
     }
 }
