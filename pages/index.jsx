@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react'
+import { Link } from "../routes";
 
 import factory from "../ethereum/factory"
 import Layout from "../components/Layout"
@@ -29,7 +30,9 @@ class CampaignIndex extends React.Component {
                 <div>
                     <h3>Open Campaigns</h3>
                     {/* Primary changes the button to blue */}
-                    <Button content='Create Campaign' floated="right" icon='add' primary />
+                    <Link route="/campaigns/new"><a>
+                        <Button content='Create Campaign' floated="right" icon='add' primary />
+                    </a></Link>
                     {this.renderCampaigns()}
                 </div>
             </Layout>
