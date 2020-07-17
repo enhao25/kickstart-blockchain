@@ -2,8 +2,9 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 import web3 from '../../ethereum/web3';
+import ContributeForm from '../../components/ContributeForm';
 
 class CampaignShow extends React.Component {
     // Need to be static so that next server can get this method without running the class / function
@@ -12,6 +13,7 @@ class CampaignShow extends React.Component {
         const campaign = Campaign(props.query.address);
         const summary = await campaign.methods.getSummary().call();
         return {
+            address: props.query.address,
             minimumContribution: summary[0],
             balance: summary[1],
             requestsCount: summary[2],
@@ -20,7 +22,7 @@ class CampaignShow extends React.Component {
         };
     }
 
-   renderCards() {
+    renderCards() {
        const { balance, manager, minimumContribution, requestsCount, approversCount} = this.props;
        const items = [
             {
@@ -55,13 +57,20 @@ class CampaignShow extends React.Component {
             },
        ];
        return <Card.Group items={items} />
-   }
+    }
 
     render() {
         return(
             <Layout>
                 <h3>Campaign Show</h3>
-                {this.renderCards()}
+                <Grid>
+                    <Grid.Column width={12}>
+                        {this.renderCards()}
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <ContributeForm address={this.props.address} />
+                    </Grid.Column>
+                </Grid>
             </Layout>
         )
     }
