@@ -33,7 +33,7 @@ class RequestNew extends React.Component {
             await campaign.methods.createRequest(description, web3.utils.toWei(value, 'ether'), recipient)
                 .send({ from: accounts[0] })
             
-            Router.pushRoutes(`/campaigns/${this.props.address}/requests`)
+            Router.pushRoute(`/campaigns/${this.props.address}/requests`)
         } catch (err) {
             this.setState({ errorMsg: err.message })
         }

@@ -12,7 +12,7 @@ const Layout = props => {
             </Head>
             <Navbar />
             {props.children}
-            <h1>Im a footer</h1>
+            {/* <h1>Im a footer</h1> */}
         </Container>
     )
 }
